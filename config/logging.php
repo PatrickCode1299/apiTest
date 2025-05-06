@@ -82,7 +82,7 @@ return [
             'replace_placeholders' => true,
         ],
 
-        'papertrail' => [
+     /**  'papertrail' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),
             'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
@@ -92,7 +92,7 @@ return [
                 'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
-        ],
+        ],  */ 
 
         'stderr' => [
             'driver' => 'monolog',
