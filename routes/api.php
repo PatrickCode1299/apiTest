@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserModelController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\GetUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +21,13 @@ use App\Http\Controllers\UserModelController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/register', function (Request $request) {
-    return $response =["user" => "helloUser"];
-});
-Route::post('/login', function (Request $request) {
-    return $response =["user" => "helloUser"];
+
+
+Route::post('/register', [RegistrationController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/users', [GetUsersController::class, 'users']);
 });
 
 
