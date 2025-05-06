@@ -20,6 +20,12 @@ class RegistrationController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ]);
 
         return response()->json(['message' => 'User registered successfully']);
     }

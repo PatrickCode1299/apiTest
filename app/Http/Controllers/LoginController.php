@@ -9,8 +9,12 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
+        
+    $credentials=  $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]); 
+    
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Invalid credentials'], 401);
         }

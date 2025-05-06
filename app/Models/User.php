@@ -9,10 +9,14 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+        /**
+     * Get the identifier that will be stored in the JWT payload.
+     *
+     * @return mixed
+     */
     /**
      * The attributes that are mass assignable.
      *

@@ -9,6 +9,9 @@ class GetUsersController extends Controller
 {
     public function users()
     {
-        return response()->json(User::select('id', 'name', 'email')->get());
+        $findUsers=User::get();
+        return $response=[
+            "all_users" => $findUsers
+        ];
     }
 }
